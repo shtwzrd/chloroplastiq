@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-
-using Chloroplastiq.Lindenmayer.Grammar;
+using Chloroplastiq.Grammar;
 
 namespace Chloroplastiq.UI
 {
@@ -18,6 +17,8 @@ namespace Chloroplastiq.UI
                 if (instance == null)
                 {
                     instance = new ConfigurationManager();
+                    rules = new Dictionary<char, string>();
+                    Axiom = "";
                 }
 
                 return instance;
@@ -42,7 +43,7 @@ namespace Chloroplastiq.UI
             set { axiom = value; }
         }
 
-        public static List<ProductionRule> Rules
+        public static Dictionary<char, string> Rules
         {
             get { return rules; }
             set { rules = value; }
@@ -81,7 +82,7 @@ namespace Chloroplastiq.UI
         private static PointF origin;
         private static ushort iteration;
         private static string axiom;
-        private static List<ProductionRule> rules;
+        private static Dictionary<char, string> rules;
         private static float startAngle;
         private static float rotateAngle;
         private static float initLength;

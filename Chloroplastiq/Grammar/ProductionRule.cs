@@ -4,7 +4,7 @@
  * Chloroplastiq (Mono-port)
 *******************************************************/
 
-namespace Chloroplastiq.Lindenmayer.Grammar
+namespace Chloroplastiq.Grammar
 {
     //Representation of a Single Rule in an L-system
     public class ProductionRule

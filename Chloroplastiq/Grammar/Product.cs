@@ -8,11 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Chloroplastiq.Lindenmayer.Grammar
+namespace Chloroplastiq.Grammar
 {
     public class Product
     {
-        public Product(string w, List<ProductionRule> P)
+        public Product(string w, Dictionary<char, String>  P)
         {
             Axiom = w;
             Alphabet = Axiom;
@@ -21,18 +21,18 @@ namespace Chloroplastiq.Lindenmayer.Grammar
 
         //This function is responsible for generating each iteration of the grammar mutation
         //In parallel
-        public string Yield(String current, int iter, List<ProductionRule> rules)
+        public string Yield(String current, int iter, IDictionary<char, string> rules)
         {
             String[] next = new String[current.Length]; //create an array representing the smallest possible substrings
             bool none = true;
             for (int i = 0; i < current.Length; i++)
             {
                 char c = current[i];
-                foreach (ProductionRule r in rules)
+                foreach (KeyValuePair<char, string> r in rules)
                 {
-                    if (c == r.Predecessor) //If it matches, replace that string with the successor
+                    if (c == r.Key) //If it matches, replace that string with the successor
                     {
-                        next[i] = r.Successor;
+                        next[i] = r.Value;
                         none = false;
                     }
                 }
@@ -55,7 +55,7 @@ namespace Chloroplastiq.Lindenmayer.Grammar
                 return Yield(result.ToString(), iter - 1, rules); //recursive call
         }
 
-        public List<ProductionRule> Rules;
+        public IDictionary<char, string> Rules;
         public string Alphabet;
 
         public string Axiom { get; set; }

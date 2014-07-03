@@ -165,7 +165,7 @@ namespace Chloroplastiq.UI
                 if (ps.Length != 2)
                     MessageBox.Show("Invalid Rule Syntax.");
                 else
-                    ConfigurationManager.Rules.Add(new Lindenmayer.Grammar.ProductionRule(ps[0][0], ps[1]));
+                    ConfigurationManager.Rules.Add(ps[0][0], ps[1]);
             }
             parent.Redraw();
         }

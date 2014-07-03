@@ -9,8 +9,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Chloroplastiq.Lindenmayer.Grammar;
-using Chloroplastiq.Lindenmayer.TurtleGraphics;
+using Chloroplastiq.Grammar;
+using Chloroplastiq.TurtleGraphics;
+using Microsoft.FSharp.Collections;
+
 namespace Chloroplastiq.UI
 {
     public delegate void EventHandler(object sender, String grammar);
@@ -45,9 +47,9 @@ namespace Chloroplastiq.UI
             ConfigurationManager.Origin = new Point(this.Size.Width / 2, this.Size.Height);
             ConfigurationManager.RotationAngle = 25;
 
-            List<ProductionRule> P = new List<ProductionRule>();
-            P.Add(new ProductionRule('X', "F-[[X]+X]+F[+FX]-X"));
-            P.Add(new ProductionRule('F', "FF"));
+            var P = new Dictionary<char, string>();
+            P.Add('X', "F-[[X]+X]+F[+FX]-X");
+            P.Add('F', "FF");
 
             ConfigurationManager.Rules = P;
             ConfigurationManager.Scaling = 50;
@@ -68,14 +70,16 @@ namespace Chloroplastiq.UI
 
         public void Redraw()
         {
-            g.Clear(Color.White);
-
+            ConfigurationManager config = ConfigurationManager.Instance;
+            g.Clear(Color.White); 
             product = new Product(ConfigurationManager.Axiom, ConfigurationManager.Rules);
             product.Iterations = ConfigurationManager.Iteration;
 
             turtle = new Turtle(g, ConfigurationManager.Origin, ConfigurationManager.StartAngle);
             lsystem = new LInterpreter(turtle, product, ConfigurationManager.RotationAngle);
+            Lindenmayer.System.generation(product.Axiom, product.Rules);
 
+            
             lsystem.Render();
             OnDrawn(lsystem.GetGrammar());
         }

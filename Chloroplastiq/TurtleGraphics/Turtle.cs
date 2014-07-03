@@ -10,7 +10,7 @@ using System.Drawing;
 
 using Chloroplastiq.UI;
 
-namespace Chloroplastiq.Lindenmayer.TurtleGraphics
+namespace Chloroplastiq.TurtleGraphics
 {
     //The Turtle is a drawing abstraction in which lines are drawn from the perspective of a turtle
     //The turtle only knows how to rotate and move forward.

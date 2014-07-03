@@ -5,7 +5,7 @@
 *******************************************************/
 using System.Drawing;
 
-namespace Chloroplastiq.Lindenmayer.TurtleGraphics
+namespace Chloroplastiq.TurtleGraphics
 {
     public class Orientation
     {
