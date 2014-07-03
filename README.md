@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Chloroplastiq
 -------------
 
@@ -13,8 +12,8 @@ PLANS:
 
 Revitalize project
 
-	- Refactor
+	- Refactor (In Progress)
 
-	- Use F# to parallelize generation -- old implementation is slow
+	- Use F# to parallelize generation -- old implementation is slow (In Progress)
 
 	- Make a new Rendering backend: Use ASP.NET and render to an HTML5 Canvas
