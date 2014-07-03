@@ -5,12 +5,7 @@
 *******************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Chloroplastiq.UI
@@ -44,7 +39,7 @@ namespace Chloroplastiq.UI
 
         private void numIterations_ValueChanged(object sender, EventArgs e)
         {
-            ConfigurationManager.Iteration = (ushort) numIterations.Value;
+            ConfigurationManager.Iteration = (ushort)numIterations.Value;
             parent.Redraw();
         }
 
@@ -91,7 +86,7 @@ namespace Chloroplastiq.UI
         {
             if (radTopMid.Checked == true)
             {
-                ConfigurationManager.Origin = new PointF(parent.Size.Width/2, 0);
+                ConfigurationManager.Origin = new PointF(parent.Size.Width / 2, 0);
             }
             parent.Redraw();
         }
@@ -109,7 +104,7 @@ namespace Chloroplastiq.UI
         {
             if (radMidLeft.Checked == true)
             {
-                ConfigurationManager.Origin = new PointF(0, parent.Size.Height/2);
+                ConfigurationManager.Origin = new PointF(0, parent.Size.Height / 2);
             }
             parent.Redraw();
         }
@@ -118,7 +113,7 @@ namespace Chloroplastiq.UI
         {
             if (radMid.Checked == true)
             {
-                ConfigurationManager.Origin = new PointF(parent.Size.Width / 2, parent.Size.Height/2);
+                ConfigurationManager.Origin = new PointF(parent.Size.Width / 2, parent.Size.Height / 2);
             }
             parent.Redraw();
         }
@@ -145,7 +140,7 @@ namespace Chloroplastiq.UI
         {
             if (radBottomMid.Checked == true)
             {
-                ConfigurationManager.Origin = new PointF(parent.Size.Width/2, parent.Size.Height);
+                ConfigurationManager.Origin = new PointF(parent.Size.Width / 2, parent.Size.Height);
             }
             parent.Redraw();
         }
@@ -158,7 +153,7 @@ namespace Chloroplastiq.UI
             }
             parent.Redraw();
         }
-        
+
         private void btnRuleChange_Click(object sender, EventArgs e)
         {
             ConfigurationManager.Rules.Clear();
@@ -174,14 +169,11 @@ namespace Chloroplastiq.UI
             }
             parent.Redraw();
         }
-                
 
         private void txtPath_TextChanged(object sender, EventArgs e)
         {
-            if(chkAcceptingInput.Checked == true)
+            if (chkAcceptingInput.Checked == true)
                 parent.lsystem.Render(txtPath.Text);
         }
-
-
     }
 }

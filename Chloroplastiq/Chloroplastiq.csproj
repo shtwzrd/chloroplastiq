@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lindenmayer\Grammar\Product.cs" />
-    <Compile Include="Lindenmayer\Grammar\ProductionRule.cs" />
-    <Compile Include="Lindenmayer\TurtleGraphics\Orientation.cs" />
-    <Compile Include="Lindenmayer\TurtleGraphics\Turtle.cs" />
-    <Compile Include="Lindenmayer\TurtleGraphics\LInterpreter.cs" />
+    <Compile Include="Grammar\Product.cs" />
+    <Compile Include="Grammar\ProductionRule.cs" />
+    <Compile Include="TurtleGraphics\Orientation.cs" />
+    <Compile Include="TurtleGraphics\Turtle.cs" />
+    <Compile Include="TurtleGraphics\LInterpreter.cs" />
     <Compile Include="UI\ConfigurationManager.cs" />
     <Compile Include="UI\Settings.cs">
       <SubType>Form</SubType>

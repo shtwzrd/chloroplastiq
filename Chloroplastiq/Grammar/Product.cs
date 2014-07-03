@@ -3,9 +3,9 @@
  * 30 December 2011
  * Chloroplastiq (Mono-port)
 *******************************************************/
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Chloroplastiq.Lindenmayer.Grammar
@@ -18,7 +18,7 @@ namespace Chloroplastiq.Lindenmayer.Grammar
             Alphabet = Axiom;
             Rules = P;
         }
-        
+
         //This function is responsible for generating each iteration of the grammar mutation
         //In parallel
         public string Yield(String current, int iter, List<ProductionRule> rules)
@@ -57,9 +57,11 @@ namespace Chloroplastiq.Lindenmayer.Grammar
 
         public List<ProductionRule> Rules;
         public string Alphabet;
+
         public string Axiom { get; set; }
+
         public float Angle { get; set; }
+
         public ushort Iterations { get; set; }
-    
     }
 }

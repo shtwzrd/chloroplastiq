@@ -5,18 +5,13 @@
 *******************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using Chloroplastiq.Lindenmayer.Grammar;
-
 
 namespace Chloroplastiq.Lindenmayer.TurtleGraphics
 {
     public class LInterpreter
     {
-
         public LInterpreter(Turtle t, Product p, float r)
         {
             Turtle = t;
@@ -44,32 +39,36 @@ namespace Chloroplastiq.Lindenmayer.TurtleGraphics
                 sentinel = reader.Read();
                 if (sentinel == -1) break;
                 character = Convert.ToChar(sentinel);
-                switch(character)
+                switch (character)
                 {
                     case '|':
                         Turtle.Forward();
                         break;
+
                     case '+':
                         Turtle.Rotate(-Rotation);
                         break;
+
                     case '-':
                         Turtle.Rotate(Rotation);
                         break;
+
                     case '[':
                         Turtle.Push(new Orientation(Turtle.Position, Turtle.Direction));
                         break;
+
                     case ']':
                         Turtle.Pop();
                         break;
+
                     case 'F':
                         Turtle.Forward();
                         break;
+
                     default:
                         break;
-
                 }
             }
-
         }
 
         //This function exists for the purpose of reading and redrawing information written into the Paths textbox.
@@ -88,24 +87,29 @@ namespace Chloroplastiq.Lindenmayer.TurtleGraphics
                     case '|':
                         Turtle.Forward();
                         break;
+
                     case '+':
                         Turtle.Rotate(Rotation);
                         break;
+
                     case '-':
                         Turtle.Rotate(-Rotation);
                         break;
+
                     case '[':
                         Turtle.Push(new Orientation(Turtle.Position, Turtle.Direction));
                         break;
+
                     case ']':
                         Turtle.Pop();
                         break;
+
                     case 'F':
                         Turtle.Forward();
                         break;
+
                     default:
                         break;
-
                 }
             }
         }
@@ -115,5 +119,4 @@ namespace Chloroplastiq.Lindenmayer.TurtleGraphics
         public Turtle Turtle;
         public Product LSystem;
     }
-    
 }

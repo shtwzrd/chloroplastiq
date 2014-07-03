@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Drawing;
 
 using Chloroplastiq.Lindenmayer.Grammar;
-using Chloroplastiq.Lindenmayer.TurtleGraphics;
 
 namespace Chloroplastiq.UI
 {
     public sealed class ConfigurationManager
     {
-
         private static ConfigurationManager instance;
 
         private ConfigurationManager() { }
@@ -24,7 +19,7 @@ namespace Chloroplastiq.UI
                 {
                     instance = new ConfigurationManager();
                 }
-                
+
                 return instance;
             }
         }
@@ -92,6 +87,5 @@ namespace Chloroplastiq.UI
         private static float initLength;
         private static float initWidth;
         private static float scaling;
-
     }
 }

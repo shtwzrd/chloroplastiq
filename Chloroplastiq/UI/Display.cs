@@ -6,17 +6,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.IO;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Windows.Forms;
-
-using Chloroplastiq.Lindenmayer.TurtleGraphics;
 using Chloroplastiq.Lindenmayer.Grammar;
+using Chloroplastiq.Lindenmayer.TurtleGraphics;
 namespace Chloroplastiq.UI
 {
     public delegate void EventHandler(object sender, String grammar);
@@ -84,7 +78,6 @@ namespace Chloroplastiq.UI
 
             lsystem.Render();
             OnDrawn(lsystem.GetGrammar());
-
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,12 +105,11 @@ namespace Chloroplastiq.UI
             save.RestoreDirectory = true;
 
             if (save.ShowDialog() == DialogResult.OK)
-                if((toImage = save.OpenFile()) != null)
+                if ((toImage = save.OpenFile()) != null)
                 {
                     file.Save(toImage, System.Drawing.Imaging.ImageFormat.Png);
                     toImage.Close();
                 }
-            }
-           
+        }
     }
 }
