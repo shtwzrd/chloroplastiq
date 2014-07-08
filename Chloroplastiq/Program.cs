@@ -1,14 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using Chloroplastiq.UI;
-
-namespace Chloroplastiq
+﻿namespace Chloroplastiq
 {
+    using System;
+    using System.Windows.Forms;
+    using UI;
+
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+
         [STAThread]
         private static void Main()
         {

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Grammar\Product.cs" />
     <Compile Include="Grammar\ProductionRule.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="TurtleGraphics\Orientation.cs" />
     <Compile Include="TurtleGraphics\Turtle.cs" />
     <Compile Include="TurtleGraphics\LInterpreter.cs" />

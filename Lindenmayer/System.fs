@@ -15,9 +15,9 @@ module System =
         | None -> x.ToString()
         ) axiom
 
-    let generation (axiom : string) rules  =
+    let generation (axiom : string) rules =
         let ruleSet = Helper.toMap(rules)
-        let grammar = 
-            gen axiom ruleSet
-            |> String.concat ""
+        let grammar =
+                gen axiom ruleSet
+                |> String.concat ""
         grammar

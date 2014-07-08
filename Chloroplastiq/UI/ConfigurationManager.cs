@@ -1,92 +1,58 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using Chloroplastiq.Grammar;
+﻿using Chloroplastiq.Annotations;
 
 namespace Chloroplastiq.UI
 {
+    using System.Collections.Generic;
+    using System.Drawing;
+
     public sealed class ConfigurationManager
     {
-        private static ConfigurationManager instance;
+        private static ConfigurationManager _instance;
 
-        private ConfigurationManager() { }
+        private ConfigurationManager()
+        {
+            _rules = new Dictionary<char, string>();
+            Axiom = "";
+
+        }
 
         public static ConfigurationManager Instance
         {
             get
             {
-                if (instance == null)
-                {
-                    instance = new ConfigurationManager();
-                    rules = new Dictionary<char, string>();
-                    Axiom = "";
-                }
-
-                return instance;
+                if (_instance != null) return _instance;
+                _instance = new ConfigurationManager();
+                return _instance;
             }
         }
 
-        public static PointF Origin
+        public PointF Origin
         {
-            get { return origin; }
-            set { origin = value; }
+            get { return _origin; }
+            set { _origin = value; }
         }
 
-        public static ushort Iteration
+        public ushort Iteration { get; set; }
+
+        public string Axiom { get; set; }
+
+        public Dictionary<char, string> Rules
         {
-            get { return iteration; }
-            set { iteration = value; }
+            get { return _rules; }
+            set { _rules = value; }
         }
 
-        public static string Axiom
-        {
-            get { return axiom; }
-            set { axiom = value; }
-        }
+        public float StartAngle { get; set; }
 
-        public static Dictionary<char, string> Rules
-        {
-            get { return rules; }
-            set { rules = value; }
-        }
+        public float RotationAngle { get; set; }
 
-        public static float StartAngle
-        {
-            get { return startAngle; }
-            set { startAngle = value; }
-        }
+        public float InitialLength { get; set; }
 
-        public static float RotationAngle
-        {
-            get { return rotateAngle; }
-            set { rotateAngle = value; }
-        }
+        public float InitialWidth { get; set; }
 
-        public static float InitialLength
-        {
-            get { return initLength; }
-            set { initLength = value; }
-        }
+        public float Scaling { get; set; }
 
-        public static float InitialWidth
-        {
-            get { return initWidth; }
-            set { initWidth = value; }
-        }
-
-        public static float Scaling
-        {
-            get { return scaling; }
-            set { scaling = value; }
-        }
-
-        private static PointF origin;
-        private static ushort iteration;
-        private static string axiom;
-        private static Dictionary<char, string> rules;
-        private static float startAngle;
-        private static float rotateAngle;
-        private static float initLength;
-        private static float initWidth;
-        private static float scaling;
+        private PointF _origin;
+        private Dictionary<char, string> _rules;
     }
 }

@@ -1,67 +1,73 @@
-﻿/*******************************************************
- * Brandon Lucas
- * 30 December 2011
- * Chloroplastiq (Mono-port)
-*******************************************************/
+﻿#region
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 
+#endregion
+
 namespace Chloroplastiq.Grammar
 {
     public class Product
     {
-        public Product(string w, Dictionary<char, String>  P)
+        public string Alphabet;
+        public IDictionary<char, string> Rules;
+
+        public Product(string w, Dictionary<char, String> p)
         {
             Axiom = w;
             Alphabet = Axiom;
-            Rules = P;
+            Rules = p;
         }
 
-        //This function is responsible for generating each iteration of the grammar mutation
-        //In parallel
+        // / <summary>
+        // / Gets or sets Axiom
+        // / </summary>
+        public string Axiom { get; set; }
+
+        // / <summary>
+        // / Gets or sets Angle
+        // / </summary>
+        public float Angle { get; set; }
+
+        // / <summary>
+        // / Gets or sets Iterations
+        // / </summary>
+        public ushort Iterations { get; set; }
+
         public string Yield(String current, int iter, IDictionary<char, string> rules)
         {
-            String[] next = new String[current.Length]; //create an array representing the smallest possible substrings
-            bool none = true;
-            for (int i = 0; i < current.Length; i++)
+            var next = new String[current.Length]; // create an array representing the smallest possible substrings
+            var none = true;
+            for (var i = 0; i < current.Length; i++)
             {
-                char c = current[i];
-                foreach (KeyValuePair<char, string> r in rules)
+                var c = current[i];
+                foreach (var r in rules)
                 {
-                    if (c == r.Key) //If it matches, replace that string with the successor
+                    if (c == r.Key) // If it matches, replace that string with the successor
                     {
                         next[i] = r.Value;
                         none = false;
                     }
                 }
-                if (none) //If no rules apply, leave the symbol the same
+
+                if (none) // If no rules apply, leave the symbol the same
                 {
                     next[i] = c.ToString();
                 }
                 none = true;
             }
 
-            StringBuilder result = new StringBuilder();
-            foreach (string s in next)
+            var result = new StringBuilder();
+            foreach (var s in next)
             {
                 result.Append(s);
             }
             Console.WriteLine(result);
+
             if (iter == 0)
                 return result.ToString();
-            else
-                return Yield(result.ToString(), iter - 1, rules); //recursive call
+            return Yield(result.ToString(), iter - 1, rules);
         }
-
-        public IDictionary<char, string> Rules;
-        public string Alphabet;
-
-        public string Axiom { get; set; }
-
-        public float Angle { get; set; }
-
-        public ushort Iterations { get; set; }
     }
 }

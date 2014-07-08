@@ -4,84 +4,84 @@
  * Chloroplastiq (Mono-port)
 *******************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-using Chloroplastiq.Grammar;
-using Chloroplastiq.TurtleGraphics;
-using Microsoft.FSharp.Collections;
+using System.Drawing.Imaging;
 
 namespace Chloroplastiq.UI
 {
+
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Grammar;
+    using TurtleGraphics;
+
     public delegate void EventHandler(object sender, String grammar);
 
     public partial class Display : Form
     {
-        Settings settings;
-        Graphics g;
-        Product product;
-        Turtle turtle;
-        Turtle toFile;
-        public LInterpreter lsystem;
+        private Graphics _g;
+        private Product _product;
+        private Turtle _turtle;
+        private Turtle _toFile;
+        public LInterpreter Lsystem;
 
         public event EventHandler Drawn;
-
-        protected virtual void OnDrawn(String grammar)
-        {
-            if (Drawn != null) Drawn(this, grammar);
-        }
 
         public Display()
         {
             InitializeComponent();
-            settings = new Settings(this);
+            var settings = new Settings(this);
             settings.Show();
             Drawn += settings.DrawnEventHandler;
 
-            ConfigurationManager.Axiom = "X";
-            ConfigurationManager.InitialLength = 1;
-            ConfigurationManager.InitialWidth = 3;
-            ConfigurationManager.Iteration = 4;
-            ConfigurationManager.Origin = new Point(this.Size.Width / 2, this.Size.Height);
-            ConfigurationManager.RotationAngle = 25;
+            var config = ConfigurationManager.Instance;
+            config.Axiom = "X";
+            config.InitialLength = 1;
+            config.InitialWidth = 3;
+            config.Iteration = 4;
+            config.Origin = new Point(Size.Width / 2, Size.Height);
+            config.RotationAngle = 25;
 
-            var P = new Dictionary<char, string>();
-            P.Add('X', "F-[[X]+X]+F[+FX]-X");
-            P.Add('F', "FF");
+            var p = new Dictionary<char, string> {{'X', "F-[[X]+X]+F[+FX]-X"}, {'F', "FF"}};
 
-            ConfigurationManager.Rules = P;
-            ConfigurationManager.Scaling = 50;
-            ConfigurationManager.StartAngle = 90;
+            config.Rules = p;
+            config.Scaling = 50;
+            config.StartAngle = 90;
 
-            g = this.CreateGraphics();
-            //Redraw();
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            g = this.CreateGraphics();
-            g.Clear(Color.White);
-            ConfigurationManager.Origin = new Point(this.Size.Width / 2, this.Size.Height);
-            turtle = new Turtle(g, ConfigurationManager.Origin, ConfigurationManager.StartAngle);
-            Redraw();
+            _g = CreateGraphics();
         }
 
         public void Redraw()
         {
-            ConfigurationManager config = ConfigurationManager.Instance;
-            g.Clear(Color.White); 
-            product = new Product(ConfigurationManager.Axiom, ConfigurationManager.Rules);
-            product.Iterations = ConfigurationManager.Iteration;
+            var config = ConfigurationManager.Instance;
+            _g.Clear(Color.White);
+            _product = new Product(config.Axiom, config.Rules)
+            {
+                Iterations = config.Iteration
+            };
 
-            turtle = new Turtle(g, ConfigurationManager.Origin, ConfigurationManager.StartAngle);
-            lsystem = new LInterpreter(turtle, product, ConfigurationManager.RotationAngle);
-            Lindenmayer.System.generation(product.Axiom, product.Rules);
+            _turtle = new Turtle(_g, config.Origin, config.StartAngle);
+            Lsystem = new LInterpreter(_turtle, _product, config.RotationAngle);
+            Lindenmayer.System.generation(_product.Axiom, _product.Rules);
 
-            
-            lsystem.Render();
-            OnDrawn(lsystem.GetGrammar());
+            Lsystem.Render();
+            OnDrawn(Lsystem.GetGrammar());
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            var config = ConfigurationManager.Instance;
+            _g = CreateGraphics();
+            _g.Clear(Color.White);
+            config.Origin = new Point(Size.Width / 2, Size.Height);
+            _turtle = new Turtle(_g, config.Origin, config.StartAngle);
+            Redraw();
+        }
+
+        protected virtual void OnDrawn(String grammar)
+        {
+            if (Drawn != null) Drawn(this, grammar);
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,29 +91,29 @@ namespace Chloroplastiq.UI
 
         private void Display_Load(object sender, EventArgs e)
         {
-            //Redraw();
+            // Redraw();
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog save = new SaveFileDialog();
-            Stream toImage;
-            Bitmap file = new Bitmap(this.Width, this.Height);
-            Graphics wrapper = Graphics.FromImage(file);
-            toFile = new Turtle(wrapper, ConfigurationManager.Origin);
+            var config = ConfigurationManager.Instance;
+            var save = new SaveFileDialog();
+            var file = new Bitmap(Width, Height);
+            var wrapper = Graphics.FromImage(file);
+            _toFile = new Turtle(wrapper, config.Origin);
 
-            LInterpreter output = new LInterpreter(toFile, product, ConfigurationManager.RotationAngle);
+            var output = new LInterpreter(_toFile, _product, config.RotationAngle);
             output.Render();
 
-            save.Filter = "Image files (*.png)|*.png|All files (*.*)|*.*";
+            save.Filter = @"Image files (*.png)|*.png|All files (*.*)|*.*";
             save.RestoreDirectory = true;
 
             if (save.ShowDialog() == DialogResult.OK)
-                if ((toImage = save.OpenFile()) != null)
-                {
-                    file.Save(toImage, System.Drawing.Imaging.ImageFormat.Png);
-                    toImage.Close();
-                }
+            {
+                var toImage = save.OpenFile();
+                file.Save(toImage, ImageFormat.Png);
+                toImage.Close();
+            }
         }
     }
 }
