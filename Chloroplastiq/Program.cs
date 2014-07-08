@@ -1,12 +1,22 @@
-﻿namespace Chloroplastiq
+﻿// <summary>
+//   The program.
+// </summary>
+
+namespace Chloroplastiq
 {
     using System;
     using System.Windows.Forms;
-    using UI;
 
+    using Chloroplastiq.UI;
+
+    /// <summary>
+    /// The program.
+    /// </summary>
     internal static class Program
     {
-
+        /// <summary>
+        /// The main.
+        /// </summary>
         [STAThread]
         private static void Main()
         {

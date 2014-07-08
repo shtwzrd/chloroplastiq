@@ -113,7 +113,7 @@
             0,
             0,
             0});
-            this.numIterations.ValueChanged += new System.EventHandler(this.numIterations_ValueChanged);
+            this.numIterations.ValueChanged += new System.EventHandler(this.NumIterationsValueChanged);
             // 
             // label6
             // 
@@ -156,7 +156,7 @@
             this.txtScale.TabIndex = 5;
             this.txtScale.Text = "50";
             this.txtScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtScale.TextChanged += new System.EventHandler(this.txtScale_TextChanged);
+            this.txtScale.TextChanged += new System.EventHandler(this.TxtScaleTextChanged);
             // 
             // txtWidth
             // 
@@ -166,7 +166,7 @@
             this.txtWidth.TabIndex = 4;
             this.txtWidth.Text = "3";
             this.txtWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtWidth.TextChanged += new System.EventHandler(this.txtWidth_TextChanged);
+            this.txtWidth.TextChanged += new System.EventHandler(this.TxtWidthTextChanged);
             // 
             // txtLength
             // 
@@ -176,7 +176,7 @@
             this.txtLength.TabIndex = 3;
             this.txtLength.Text = "1";
             this.txtLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
+            this.txtLength.TextChanged += new System.EventHandler(this.TxtLengthTextChanged);
             // 
             // label4
             // 
@@ -224,7 +224,7 @@
             this.radBottomMid.TabIndex = 8;
             this.radBottomMid.TabStop = true;
             this.radBottomMid.UseVisualStyleBackColor = true;
-            this.radBottomMid.CheckedChanged += new System.EventHandler(this.radBottomMid_CheckedChanged);
+            this.radBottomMid.CheckedChanged += new System.EventHandler(this.RadBottomMidCheckedChanged);
             // 
             // radTopMid
             // 
@@ -234,7 +234,7 @@
             this.radTopMid.Size = new System.Drawing.Size(14, 13);
             this.radTopMid.TabIndex = 7;
             this.radTopMid.UseVisualStyleBackColor = true;
-            this.radTopMid.CheckedChanged += new System.EventHandler(this.radTopMid_CheckedChanged);
+            this.radTopMid.CheckedChanged += new System.EventHandler(this.RadTopMidCheckedChanged);
             // 
             // radBottomLeft
             // 
@@ -244,7 +244,7 @@
             this.radBottomLeft.Size = new System.Drawing.Size(14, 13);
             this.radBottomLeft.TabIndex = 6;
             this.radBottomLeft.UseVisualStyleBackColor = true;
-            this.radBottomLeft.CheckedChanged += new System.EventHandler(this.radBottomLeft_CheckedChanged);
+            this.radBottomLeft.CheckedChanged += new System.EventHandler(this.RadBottomLeftCheckedChanged);
             // 
             // radMidRight
             // 
@@ -254,7 +254,7 @@
             this.radMidRight.Size = new System.Drawing.Size(14, 13);
             this.radMidRight.TabIndex = 5;
             this.radMidRight.UseVisualStyleBackColor = true;
-            this.radMidRight.CheckedChanged += new System.EventHandler(this.radMidRight_CheckedChanged);
+            this.radMidRight.CheckedChanged += new System.EventHandler(this.RadMidRightCheckedChanged);
             // 
             // radBottomRight
             // 
@@ -264,7 +264,7 @@
             this.radBottomRight.Size = new System.Drawing.Size(14, 13);
             this.radBottomRight.TabIndex = 1;
             this.radBottomRight.UseVisualStyleBackColor = true;
-            this.radBottomRight.CheckedChanged += new System.EventHandler(this.radBottomRight_CheckedChanged);
+            this.radBottomRight.CheckedChanged += new System.EventHandler(this.RadBottomRightCheckedChanged);
             // 
             // radMid
             // 
@@ -274,7 +274,7 @@
             this.radMid.Size = new System.Drawing.Size(14, 13);
             this.radMid.TabIndex = 4;
             this.radMid.UseVisualStyleBackColor = true;
-            this.radMid.CheckedChanged += new System.EventHandler(this.radMid_CheckedChanged);
+            this.radMid.CheckedChanged += new System.EventHandler(this.RadMidCheckedChanged);
             // 
             // radMidLeft
             // 
@@ -284,7 +284,7 @@
             this.radMidLeft.Size = new System.Drawing.Size(14, 13);
             this.radMidLeft.TabIndex = 3;
             this.radMidLeft.UseVisualStyleBackColor = true;
-            this.radMidLeft.CheckedChanged += new System.EventHandler(this.radMidLeft_CheckedChanged);
+            this.radMidLeft.CheckedChanged += new System.EventHandler(this.RadMidLeftCheckedChanged);
             // 
             // radTopRight
             // 
@@ -294,7 +294,7 @@
             this.radTopRight.Size = new System.Drawing.Size(14, 13);
             this.radTopRight.TabIndex = 2;
             this.radTopRight.UseVisualStyleBackColor = true;
-            this.radTopRight.CheckedChanged += new System.EventHandler(this.radTopRight_CheckedChanged);
+            this.radTopRight.CheckedChanged += new System.EventHandler(this.RadTopRightCheckedChanged);
             // 
             // radTopLeft
             // 
@@ -304,7 +304,7 @@
             this.radTopLeft.Size = new System.Drawing.Size(14, 13);
             this.radTopLeft.TabIndex = 0;
             this.radTopLeft.UseVisualStyleBackColor = true;
-            this.radTopLeft.CheckedChanged += new System.EventHandler(this.radTopLeft_CheckedChanged);
+            this.radTopLeft.CheckedChanged += new System.EventHandler(this.RadTopLeftCheckedChanged);
             // 
             // groupBox3
             // 
@@ -327,7 +327,7 @@
             this.txtRotationAngle.TabIndex = 6;
             this.txtRotationAngle.Text = "25";
             this.txtRotationAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtRotationAngle.TextChanged += new System.EventHandler(this.txtRotationAngle_TextChanged);
+            this.txtRotationAngle.TextChanged += new System.EventHandler(this.TxtRotationAngleTextChanged);
             // 
             // txtStartingAngle
             // 
@@ -337,7 +337,7 @@
             this.txtStartingAngle.TabIndex = 2;
             this.txtStartingAngle.Text = "90";
             this.txtStartingAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtStartingAngle.TextChanged += new System.EventHandler(this.txtStartingAngle_TextChanged);
+            this.txtStartingAngle.TextChanged += new System.EventHandler(this.TxtStartingAngleTextChanged);
             // 
             // label2
             // 
@@ -375,7 +375,7 @@
             this.txtAxiom.Size = new System.Drawing.Size(173, 20);
             this.txtAxiom.TabIndex = 2;
             this.txtAxiom.Text = "X";
-            this.txtAxiom.TextChanged += new System.EventHandler(this.txtAxiom_TextChanged);
+            this.txtAxiom.TextChanged += new System.EventHandler(this.TxtAxiomTextChanged);
             // 
             // groupBox1
             // 
@@ -397,7 +397,7 @@
             this.btnRuleChange.TabIndex = 2;
             this.btnRuleChange.Text = "Commit Rule Change";
             this.btnRuleChange.UseVisualStyleBackColor = false;
-            this.btnRuleChange.Click += new System.EventHandler(this.btnRuleChange_Click);
+            this.btnRuleChange.Click += new System.EventHandler(this.BtnRuleChangeClick);
             // 
             // txtRules
             // 
@@ -429,7 +429,7 @@
             this.txtPath.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtPath.Size = new System.Drawing.Size(370, 202);
             this.txtPath.TabIndex = 0;
-            this.txtPath.TextChanged += new System.EventHandler(this.txtPath_TextChanged);
+            this.txtPath.TextChanged += new System.EventHandler(this.TxtPathTextChanged);
             // 
             // chkAcceptingInput
             // 

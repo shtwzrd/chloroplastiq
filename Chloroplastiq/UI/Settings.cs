@@ -1,188 +1,364 @@
-﻿/*******************************************************
- * Brandon Lucas
- * 30 December 2011
- * Chloroplastiq (Mono-port)
-*******************************************************/
-
+﻿// <summary>
+//   The Class managing the Settings WinForm.
+// </summary>
 namespace Chloroplastiq.UI
 {
     using System;
     using System.Drawing;
     using System.Windows.Forms;
 
+    /// <summary>
+    /// The settings.
+    /// </summary>
     public partial class Settings : Form
     {
-        private readonly Display _parent;
+        /// <summary>
+        /// The _parent.
+        /// </summary>
+        private readonly Display parent;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Settings"/> class.
+        /// </summary>
+        /// <param name="parent">
+        /// The parent.
+        /// </param>
         public Settings(Display parent)
         {
-            InitializeComponent();
-            _parent = parent;
+            this.InitializeComponent();
+            this.parent = parent;
         }
 
-        public String LsystemPath
+        /// <summary>
+        /// Gets or sets the L-system path.
+        /// </summary>
+        public string LsystemPath
         {
-            get { return txtPath.Text; }
-            set { txtPath.Text = value; }
+            get { return this.txtPath.Text; }
+            set { this.txtPath.Text = value; }
         }
 
-        public void DrawnEventHandler(object sender, String grammar)
+        /// <summary>
+        /// The drawn event handler.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="grammar">
+        /// The grammar.
+        /// </param>
+        public void DrawnEventHandler(object sender, string grammar)
         {
-            txtPath.Text = grammar;
+            this.txtPath.Text = grammar;
         }
 
-        private void txtAxiom_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The txt axiom_ text changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void TxtAxiomTextChanged(object sender, EventArgs e)
         {
             var config = ConfigurationManager.Instance;
-            config.Axiom = txtAxiom.Text;
-            _parent.Redraw();
+            config.Axiom = this.txtAxiom.Text;
+            this.parent.Redraw();
         }
 
-        private void numIterations_ValueChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The number iterations value changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void NumIterationsValueChanged(object sender, EventArgs e)
         {
             var config = ConfigurationManager.Instance;
-            config.Iteration = (ushort)numIterations.Value;
-            _parent.Redraw();
+            config.Iteration = (ushort)this.numIterations.Value;
+            this.parent.Redraw();
         }
 
-        private void txtStartingAngle_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The txt starting angle_ text changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void TxtStartingAngleTextChanged(object sender, EventArgs e)
         {
-
             var config = ConfigurationManager.Instance;
-            config.StartAngle = (float)Double.Parse(txtStartingAngle.Text);
-            _parent.Redraw();
+            config.StartAngle = (float)double.Parse(this.txtStartingAngle.Text);
+            this.parent.Redraw();
         }
 
-        private void txtRotationAngle_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The txt rotation angle_ text changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void TxtRotationAngleTextChanged(object sender, EventArgs e)
         {
             var config = ConfigurationManager.Instance;
-            config.RotationAngle = (float)Double.Parse(txtRotationAngle.Text);
-            _parent.Redraw();
+            config.RotationAngle = (float)double.Parse(this.txtRotationAngle.Text);
+            this.parent.Redraw();
         }
 
-        private void txtLength_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The txt length_ text changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void TxtLengthTextChanged(object sender, EventArgs e)
         {
-
             var config = ConfigurationManager.Instance;
-            config.InitialLength = (float)Double.Parse(txtLength.Text);
-            _parent.Redraw();
+            config.InitialLength = (float)double.Parse(this.txtLength.Text);
+            this.parent.Redraw();
         }
 
-        private void txtWidth_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The txt width_ text changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void TxtWidthTextChanged(object sender, EventArgs e)
         {
-
             var config = ConfigurationManager.Instance;
-            config.InitialWidth = (float)Double.Parse(txtWidth.Text);
-            _parent.Redraw();
+            config.InitialWidth = (float)double.Parse(this.txtWidth.Text);
+            this.parent.Redraw();
         }
 
-        private void txtScale_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The txt scale_ text changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void TxtScaleTextChanged(object sender, EventArgs e)
         {
-
             var config = ConfigurationManager.Instance;
-            config.Scaling = (float)Double.Parse(txtScale.Text);
-            _parent.Redraw();
+            config.Scaling = (float)double.Parse(this.txtScale.Text);
+            this.parent.Redraw();
         }
 
-        private void radTopLeft_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The rad top left_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadTopLeftCheckedChanged(object sender, EventArgs e)
         {
-            if (radTopLeft.Checked)
+            if (this.radTopLeft.Checked)
             {
                 var config = ConfigurationManager.Instance;
                 config.Origin = new PointF(0, 0);
             }
-            _parent.Redraw();
+
+            this.parent.Redraw();
         }
 
-        private void radTopMid_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The rad top mid_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadTopMidCheckedChanged(object sender, EventArgs e)
         {
-            if (radTopMid.Checked)
-            {
-
-                var config = ConfigurationManager.Instance;
-                config.Origin = new PointF(_parent.Size.Width / 2, 0);
-            }
-
-            _parent.Redraw();
-        }
-
-        private void radTopRight_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radTopRight.Checked)
+            if (this.radTopMid.Checked)
             {
                 var config = ConfigurationManager.Instance;
-                config.Origin = new PointF(_parent.Size.Width, 0);
+                config.Origin = new PointF(this.parent.Size.Width / 2f, 0);
             }
-            _parent.Redraw();
+
+            this.parent.Redraw();
         }
 
-        private void radMidLeft_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The rad top right_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadTopRightCheckedChanged(object sender, EventArgs e)
         {
-            if (radMidLeft.Checked)
+            if (this.radTopRight.Checked)
             {
                 var config = ConfigurationManager.Instance;
-                config.Origin = new PointF(0, _parent.Size.Height / 2);
+                config.Origin = new PointF(this.parent.Size.Width, 0);
             }
-            _parent.Redraw();
+
+            this.parent.Redraw();
         }
 
-        private void radMid_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The rad mid left_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadMidLeftCheckedChanged(object sender, EventArgs e)
         {
-            if (radMid.Checked)
+            if (this.radMidLeft.Checked)
             {
                 var config = ConfigurationManager.Instance;
-                config.Origin = new PointF(_parent.Size.Width / 2, _parent.Size.Height / 2);
+                config.Origin = new PointF(0, this.parent.Size.Height / 2f);
             }
-            _parent.Redraw();
+
+            this.parent.Redraw();
         }
 
-        private void radMidRight_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The rad mid_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadMidCheckedChanged(object sender, EventArgs e)
         {
-            if (radMidRight.Checked)
+            if (this.radMid.Checked)
             {
                 var config = ConfigurationManager.Instance;
-                config.Origin = new PointF(_parent.Size.Width, _parent.Size.Height / 2);
+                config.Origin = new PointF(this.parent.Size.Width / 2f, this.parent.Size.Height / 2f);
             }
-            _parent.Redraw();
+
+            this.parent.Redraw();
         }
 
-        private void radBottomLeft_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The rad mid right_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadMidRightCheckedChanged(object sender, EventArgs e)
         {
-            if (radBottomLeft.Checked)
+            if (this.radMidRight.Checked)
             {
                 var config = ConfigurationManager.Instance;
-                config.Origin = new PointF(0, _parent.Size.Height);
+                config.Origin = new PointF(this.parent.Size.Width, this.parent.Size.Height / 2f);
             }
-            _parent.Redraw();
+
+            this.parent.Redraw();
         }
 
-        private void radBottomMid_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The rad bottom left_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadBottomLeftCheckedChanged(object sender, EventArgs e)
         {
-            if (radBottomMid.Checked)
+            if (this.radBottomLeft.Checked)
             {
                 var config = ConfigurationManager.Instance;
-                config.Origin = new PointF(_parent.Size.Width / 2, _parent.Size.Height);
+                config.Origin = new PointF(0, this.parent.Size.Height);
             }
 
-            _parent.Redraw();
+            this.parent.Redraw();
         }
 
-        private void radBottomRight_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The rad bottom mid_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadBottomMidCheckedChanged(object sender, EventArgs e)
         {
-            if (radBottomRight.Checked)
+            if (this.radBottomMid.Checked)
             {
                 var config = ConfigurationManager.Instance;
-                config.Origin = new PointF(_parent.Size.Width, _parent.Size.Height);
+                config.Origin = new PointF(this.parent.Size.Width / 2f, this.parent.Size.Height);
             }
-            _parent.Redraw();
+
+            this.parent.Redraw();
         }
 
-        private void btnRuleChange_Click(object sender, EventArgs e)
+        /// <summary>
+        /// The rad bottom right_ checked changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void RadBottomRightCheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radBottomRight.Checked)
+            {
+                var config = ConfigurationManager.Instance;
+                config.Origin = new PointF(this.parent.Size.Width, this.parent.Size.Height);
+            }
+
+            this.parent.Redraw();
+        }
+
+        /// <summary>
+        /// The button rule change_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void BtnRuleChangeClick(object sender, EventArgs e)
         {
             var config = ConfigurationManager.Instance;
             config.Rules.Clear();
 
-            var ruleArray = txtRules.Text.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var ruleArray = this.txtRules.Text.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var r in ruleArray)
             {
@@ -195,14 +371,26 @@ namespace Chloroplastiq.UI
                 {
                     config.Rules.Add(ps[0][0], ps[1]);
                 }
-                _parent.Redraw();
+
+                this.parent.Redraw();
             }
         }
 
-        private void txtPath_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// The txt path_ text changed.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void TxtPathTextChanged(object sender, EventArgs e)
         {
-            if (chkAcceptingInput.Checked)
-                _parent.Lsystem.Render();
+            if (this.chkAcceptingInput.Checked)
+            {
+                this.parent.Lsystem.Render();
+            }
         }
     }
 }

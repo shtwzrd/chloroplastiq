@@ -63,14 +63,14 @@
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loadToolStripMenuItem.Text = "Render";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItemClick);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAsToolStripMenuItem.Text = "Save as...";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItemClick);
             // 
             // quitToolStripMenuItem1
             // 
@@ -88,7 +88,7 @@
             this.MainMenuStrip = this.menuBar;
             this.Name = "Display";
             this.Text = "Chloroplaster";
-            this.Load += new System.EventHandler(this.Display_Load);
+            this.Load += new System.EventHandler(this.DisplayLoad);
             this.menuBar.ResumeLayout(false);
             this.menuBar.PerformLayout();
             this.ResumeLayout(false);

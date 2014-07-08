@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Grammar\Product.cs" />
-    <Compile Include="Grammar\ProductionRule.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="TurtleGraphics\Orientation.cs" />
     <Compile Include="TurtleGraphics\Turtle.cs" />
@@ -61,6 +60,7 @@
     </Compile>
     <Compile Include="UI\Display.cs">
       <SubType>Form</SubType>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="UI\Display.Designer.cs">
       <DependentUpon>Display.cs</DependentUpon>
